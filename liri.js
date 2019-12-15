@@ -1,9 +1,9 @@
 require("dotenv").config();
 
 var keys = require("./keys.js");
-// var spotify = new Spotify(keys.spotify);
 
-var 
+//spotify API:
+var spotify = new Spotify(keys.spotify);
 
 var theme = process.argv[2]; 
 var search = process.argv.slice(3).join(' '); 
@@ -16,6 +16,8 @@ if (!search) {
     search = 'Beyonce';
 }
 
+
+//themes searches:
 if (theme === 'concert-this') { 
     console.log('searching for a concert');
 
