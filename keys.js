@@ -1,33 +1,43 @@
 console.log('this is loaded');
 
-exports.spotify = {
+require("dotenv").config();
+
+const Spotify = require('node-spotify-api');
+
+var spotify = new Spotify({
   id: process.env.SPOTIFY_ID,
   secret: process.env.SPOTIFY_SECRET
-};
-
-//spotify:
-var Spotify = require('node-spotify-api');
- 
-var spotify = new Spotify({
-  id: <your spotify client id>,
-  secret: <your spotify client secret>
 });
- 
+
 spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
   if (err) {
     return console.log('Error occurred: ' + err);
   }
  
-console.log(data); 
+console.log(JSON.stringify(data,null,2)); 
 });
 
 
+
+//SPOTIFY:
+ 
+// var spotify = new Spotify({
+//   id: process.env.SPOTIFY_ID,
+//   secret: process.env.SPOTIFY_SECRET
+// });
+
+
+
+//AXIOS:
+
+
+
 //creating a constructor:
-var Liri = function() { 
+// var Liri = function() { 
 
-  this.findSearch = function(concert-this) { 
-    var URL = 
+//   this.findSearch = function(concert-this) { 
+//     var URL = 
 
-    axios.get(URL).then()
-  }
-}
+//     axios.get(URL).then()
+//   }
+// }
