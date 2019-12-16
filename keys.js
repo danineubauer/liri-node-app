@@ -12,16 +12,12 @@ var Keys = function() {
     var URL = 'http://www.omdbapi.com/?i=tt3896198&apikey=' + process.env.MOVIE_API;
     axios.get(URL).then(function(response) { 
       var jsonData = response.data;
-
-
     }) 
   }
 }
 
-
-
-//spotify:
-//Find song: 
+// //spotify:
+// //Find song: 
 const Spotify = require('node-spotify-api');
 
 var spotify = new Spotify({
@@ -33,25 +29,15 @@ spotify.search({ type: 'track', query: 'beyonce' , limit: 1 }, function(err, dat
   if (err) {
     return console.log('Error occurred: ' + err);
   }
-  var jsonData = JSON.stringify(data,null,2); 
+  var jsonData = data.tracks.items[0]; 
   
-  // var showData = [
-  //   'Song Name: ' + jsonData.tracks.items[0],
-  //   'Artist Name: ' + jsonData.tracks.items[0].album.artists[0].name,
-  //   'Spotify Link: ' + jsonData.track.items[0].album.href,
-  //   'Album Name: ' + jsonData.tracks.items[0].album.name,
-  // ]
-  console.log(jsonData.tracks.items); 
-// console.log(JSON.stringify(data,null,2));
-
-// songName = data.tracks.items.name;
-// artistName = data.tracks.items.artists; 
-// spotifyLink = data.tracks.items.external_urls;
-// albumName = data.tracks.items.album.name;
-
-//artist, name, Spotify link, album 
-//  name = data.name
-//  artist = data.
+  var showData = [
+    'Song Name: ' + jsonData.name,
+    'Artist Name: ' + jsonData.artists[0].name, 
+    'Spotify Link: ' + jsonData.href, 
+    'Album Name: ' + jsonData.album.name, 
+  ]
+  console.log(showData); 
 
 });
 
