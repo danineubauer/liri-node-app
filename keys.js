@@ -1,5 +1,9 @@
 console.log('this is loaded');
 
+var liri = require('./liri');
+const fs = require('fs'); 
+const axis = require('axios'); 
+
 require("dotenv").config();
 
 
@@ -18,28 +22,8 @@ var Keys = function() {
 
 // //spotify:
 // //Find song: 
-const Spotify = require('node-spotify-api');
 
-var spotify = new Spotify({
-  id: process.env.SPOTIFY_ID,
-  secret: process.env.SPOTIFY_SECRET
-});
-
-spotify.search({ type: 'track', query: 'beyonce' , limit: 1 }, function(err, data) {
-  if (err) {
-    return console.log('Error occurred: ' + err);
-  }
-  var jsonData = data.tracks.items[0]; 
   
-  var showData = [
-    'Song Name: ' + jsonData.name,
-    'Artist Name: ' + jsonData.artists[0].name, 
-    'Spotify Link: ' + jsonData.href, 
-    'Album Name: ' + jsonData.album.name, 
-  ]
-  console.log(showData); 
-
-});
 
 
 //Find Movie:
