@@ -2,11 +2,29 @@ require("dotenv").config();
 
 var keys = require("./keys.js");
 const fs = require('fs'); 
-const axis = require('axios'); 
 
-const Spotify = require('node-spotify-api');
+//OMDb:
+var axios = require('axios'); 
+
+const findMovie = function(search) { 
+    axios
+        .get('http://www.omdbapi.com/?i=tt3896198&apikey=6dea1639')
+        .then(function(response) { 
+            console.log('url for movie works'); 
+            console.log(response); 
+        }, 
+        function(error) { 
+            if(error.response) { 
+                console.log(error); 
+            }
+        }
+    );
+}
+
 
 //spotify API:
+const Spotify = require('node-spotify-api');
+
 var spotify = new Spotify({
     id: process.env.SPOTIFY_ID,
     secret: process.env.SPOTIFY_SECRET
@@ -18,6 +36,7 @@ var theme = process.argv[2];
 var search = process.argv.slice(3).join(' '); 
 
 
+//spotify-this-song:
 var findSong = function(search) { 
     spotify.search({ type: 'track', query: search , limit: 1 }, function(err, data) {
       if (err) {
@@ -34,8 +53,6 @@ var findSong = function(search) {
       console.log(showData); 
     });
 }
-
-
 
 
 //If no search happened: 
