@@ -6,9 +6,12 @@ const fs = require('fs');
 //OMDb:
 var axios = require('axios'); 
 
+var theme = process.argv[2]; 
+var search = process.argv.slice(3).join(' '); 
+
 const findMovie = function(search) { 
     axios
-        .get(' http://www.omdbapi.com/?i=tt3896198' + '&apikey=6dea1639')
+        .get(' http://www.omdbapi.com/?t=' + search + '&apikey=6dea1639')
         .then(function(response) { 
             console.log('url for movie works'); 
             // console.log(response); //displays all data
@@ -45,9 +48,6 @@ var spotify = new Spotify({
 });
 
 
-
-var theme = process.argv[2]; 
-var search = process.argv.slice(3).join(' '); 
 
 
 //spotify-this-song:
