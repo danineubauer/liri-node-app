@@ -8,10 +8,23 @@ var axios = require('axios');
 
 const findMovie = function(search) { 
     axios
-        .get('http://www.omdbapi.com/?i=tt3896198&apikey=6dea1639')
+        .get(' http://www.omdbapi.com/?i=tt3896198' + '&apikey=6dea1639')
         .then(function(response) { 
             console.log('url for movie works'); 
-            console.log(response); 
+            // console.log(response); //displays all data
+            // console.log(response.data);
+            var shortResponse = response.data; 
+            var showData = [
+                'Title of movie: ' + shortResponse.Title,
+                'Year the movie came out: ' + shortResponse.Year,
+                'IMDB Rating of the movie: ' + shortResponse.Ratings[0].Value,
+                'Rotten Tomatoes Rating of the movie: ' + shortResponse.Ratings[1].Value,
+                'Country where the movie was produced: ' + shortResponse.Country,
+                'Language of the movie: ' + shortResponse.Language,
+                'Plot: ' + shortResponse.Plot, 
+                'Actors: ' + shortResponse.Actors,
+            ]; 
+            console.log(showData.join('\n ')); 
         }, 
         function(error) { 
             if(error.response) { 
@@ -20,6 +33,7 @@ const findMovie = function(search) {
         }
     );
 }
+
 
 
 //spotify API:
@@ -53,6 +67,7 @@ var findSong = function(search) {
       console.log(showData); 
     });
 }
+
 
 
 //If no search happened: 
