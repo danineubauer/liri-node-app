@@ -19,30 +19,3 @@ var Keys = function() {
     }) 
   }
 }
-
-// //spotify:
-// //Find song: 
-
-  
-
-
-//Find Movie:
-
-
-
-
-
-
-//AXIOS:
-
-
-
-//creating a constructor:
-// var Liri = function() { 
-
-//   this.findSearch = function(concert-this) { 
-//     var URL = 
-
-//     axios.get(URL).then()
-//   }
-// }

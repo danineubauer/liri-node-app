@@ -38,7 +38,6 @@ const findMovie = function(search) {
 }
 
 
-
 //spotify API:
 const Spotify = require('node-spotify-api');
 
@@ -46,8 +45,6 @@ var spotify = new Spotify({
     id: process.env.SPOTIFY_ID,
     secret: process.env.SPOTIFY_SECRET
 });
-
-
 
 
 //spotify-this-song:
@@ -59,6 +56,7 @@ var findSong = function(search) {
       var jsonData = data.tracks.items[0]; 
       
       var showData = [
+        '-------Displaying song info-------',
         'Song Name: ' + jsonData.name,
         'Artist Name: ' + jsonData.artists[0].name, 
         'Spotify Link: ' + jsonData.href, 
@@ -66,6 +64,14 @@ var findSong = function(search) {
       ]
       console.log(showData.join('\n')); 
     });
+}
+
+//find file: 
+const findFile = function() { 
+    fs.readFile('random.txt', 'utf8', function(err, data) { 
+    search = data; 
+    findSong(data);
+    })
 }
 
 
@@ -94,7 +100,8 @@ if (theme === 'concert-this') {
     findMovie(search);
 
 } else if (theme === 'do-what-it-says') { 
-    console.log('do what it says')
+    console.log('do what it says'); 
+    findFile();
 }
 
 
