@@ -64,7 +64,7 @@ var findSong = function(search) {
         'Spotify Link: ' + jsonData.href, 
         'Album Name: ' + jsonData.album.name, 
       ]
-      console.log(showData); 
+      console.log(showData.join('\n')); 
     });
 }
 
