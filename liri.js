@@ -1,26 +1,30 @@
 require("dotenv").config();
 
 var keys = require("./keys.js");
-const fs = require('fs'); 
+var fs = require('fs'); 
+var moment = require('moment');
+moment().format();
 
 //OMDb:
 var axios = require('axios'); 
 
 var theme = process.argv[2]; 
-var search = process.argv.slice(3).join(' '); 
+var search = process.argv.slice(3).join('+'); 
 
 //find concert: 
-
 const findConcert = function(search) { 
     axios
-        .get( 'https://rest.bandsintown.com/artists/celine+dion/events?app_id=codingbootcamp')
+        .get( 'https://rest.bandsintown.com/artists/' + search + '/events?app_id=codingbootcamp')
         .then(function(response) { 
-            var shortcut = response.data[0]; 
+            var shortcut = response.data[0];
+            var time = shortcut.datetime; 
+            momentTime = moment(time).format('MM/DD/YYYY')
+            console.log(momentTime);
             const showData = [ 
                     'Artist name: ' + shortcut.artist.name,
                     'Name of venue: ' + shortcut.venue.name,
                     'Venue location: ' + shortcut.venue.city,
-                    'Date of event: ' +  shortcut.datetime //use moment JS 
+                    'Date of event: ' +  momentTime //use moment JS 
                 ];
             console.log(showData.join('\n'));
         }, 
@@ -30,8 +34,6 @@ const findConcert = function(search) {
             }
         })
 }
-
-
 
 const findMovie = function(search) { 
     axios

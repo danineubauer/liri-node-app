@@ -7,15 +7,3 @@ const axis = require('axios');
 require("dotenv").config();
 
 
-
-//Find Concert: 
-
-//create constructor: 
-var Keys = function() { 
-  this.findMovie = function(search) { 
-    var URL = 'http://www.omdbapi.com/?i=tt3896198&apikey=' + process.env.MOVIE_API;
-    axios.get(URL).then(function(response) { 
-      var jsonData = response.data;
-    }) 
-  }
-}
