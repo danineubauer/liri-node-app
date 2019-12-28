@@ -9,6 +9,30 @@ var axios = require('axios');
 var theme = process.argv[2]; 
 var search = process.argv.slice(3).join(' '); 
 
+//find concert: 
+
+const findConcert = function(search) { 
+    axios
+        .get( 'https://rest.bandsintown.com/artists/celine+dion/events?app_id=codingbootcamp')
+        .then(function(response) { 
+            var shortcut = response.data[0]; 
+            const showData = [ 
+                    'Artist name: ' + shortcut.artist.name,
+                    'Name of venue: ' + shortcut.venue.name,
+                    'Venue location: ' + shortcut.venue.city,
+                    'Date of event: ' +  shortcut.datetime //use moment JS 
+                ];
+            console.log(showData.join('\n'));
+        }, 
+        function(err){ 
+            if (err.response) {
+                console.log('error: ', err);
+            }
+        })
+}
+
+
+
 const findMovie = function(search) { 
     axios
         .get(' http://www.omdbapi.com/?t=' + search + '&apikey=6dea1639')
