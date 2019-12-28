@@ -1,3 +1,3 @@
 # liri-node-app
 
-<src='/photos/1.png><src='/photos/1.png>
+<link href='/photos/1.png> <link href='/photos/1.png>
