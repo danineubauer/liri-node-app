@@ -19,8 +19,8 @@ const findConcert = function(search) {
             var shortcut = response.data[0];
             var time = shortcut.datetime; 
             momentTime = moment(time).format('MM/DD/YYYY')
-            console.log(momentTime);
             const showData = [ 
+                    '-------Displaying concert info-------',
                     'Artist name: ' + shortcut.artist.name,
                     'Name of venue: ' + shortcut.venue.name,
                     'Venue location: ' + shortcut.venue.city,
@@ -44,6 +44,7 @@ const findMovie = function(search) {
             // console.log(response.data);
             var shortResponse = response.data; 
             var showData = [
+                '-------Displaying movie info-------',
                 'Title of movie: ' + shortResponse.Title,
                 'Year the movie came out: ' + shortResponse.Year,
                 'IMDB Rating of the movie: ' + shortResponse.Ratings[0].Value,
@@ -118,7 +119,6 @@ if (theme === 'concert-this') {
 
 } else if (theme === 'spotify-this-song') { 
     console.log('searching for a song');
-    console.log('You searched for: ')
     findSong(search);
 
 } else if (theme === 'movie-this') { 
@@ -130,16 +130,6 @@ if (theme === 'concert-this') {
     findFile();
 }
 
-
-//node liri.js concert-this <artist/band name here>
-// concert-this
-    //name, venue location, date of event (moment)
-    //codingbootcamp as app_id
-        //https://rest.bandsintown.com/artists/celine+dion/events?app_id=codingbootcamp
-// spotify-this-song
-    //artist, name, Spotify link, album 
-// movie-this
-// do-what-it-says
 
 
 
